@@ -94,7 +94,9 @@ $(document).ready(function(){
 */
 // Running Timer
 	function startTimer() {
-      interval = setInterval(decrement, 1000);
+	  CountDown = 60;
+      interval = setInterval(decrement, 1000);      
+      console.log("question " + countDownNumber +" interval " + interval );
     }
 
 //  The decrement function.
