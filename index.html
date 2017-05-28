@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trivia Game</title>
+  <!--  Style Sheets  -->
+  <!-- ---------------------------------------- -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="http://bootswatch.com/solar/bootstrap.css"> 
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" id="Logo">
+          <h1>Nelum</h1>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="index.html">Trivia Game <span class="caret"></span></a></li>
+        <!--<li><a href="contact.html">Contact</a></li>-->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+<div class="jumbotron">
+  <div class="container text-center quiz">
+
+    <h1>Trivia Game</h1>      
+
+
+    <div class = "row">
+       <div class = "col-sm-12">
+           <div id ="question"> Question goes here Question goes here Question goes here Question goes here Question goes here</div>
+       </div>
+    </div>
+    <div class = "row">
+        <div class ="col-sm-6">
+          <div id = "ans1" class = "ques"> <lablel class = "success">Answer 1 goes here</lablel></div>
+          <div id = "ans2" class = "ques"> Answer 2 goes here</div>
+        </div>
+        <div class = "row">
+            <div id = "ans3" class = "ques"> Answer 3 goes here</div>
+            <div id = "ans4" class = "ques"> Answer 4 goes here</div>
+        </div>
+    </div>
+    <div class = "row">
+         <div class = "col-sm-6">
+            <button id ="restart">Restart</button>
+            <div label id ="timeLeft"></div>
+            <div id ="countDownNumber">
+            </div>
+    </div>
+
+  </div>
+</div>
+  
+
+
+
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+  <!-- JAVASCRIPT  -->
+  <!-- ---------------------------------------- -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+  <script src="assets/javascript/app.js" type="text/javascript"></script>
+
+</body>
+</html>
