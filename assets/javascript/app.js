@@ -37,14 +37,14 @@ $(document).ready(function(){
 	    a3:"152",
 	    a4:"235",
 	    ca:"a3" 
-	  },{
+	  }/*,{
 	  	ques: "",
 	    a1:"",
 	    a2:"",
 	    a3:"",
 	    a4:"",
 	    ca:"" 
-	  }
+	  }*/
 
 
 	]
@@ -94,9 +94,8 @@ $(document).ready(function(){
 */
 // Running Timer
 	function startTimer() {
-	  CountDown = 60;
+	  CountDown = 21;
       interval = setInterval(decrement, 1000);      
-      console.log("question " + countDownNumber +" interval " + interval );
     }
 
 //  The decrement function.
@@ -104,23 +103,31 @@ $(document).ready(function(){
       CountDown--;
       $("#countDownNumber").html("<h2>" + CountDown + "</h2>");
       if (CountDown <= 0) {
-        stopTimer();          
+      	$("#countDownNumber").html("<h3>Times<br/>Up</h3>");
+      	DisplayCorrectAnswer();
+        stopTimer();                   
       }
     }
 
 //  The stop function
     function stopTimer() {
-      console.log("stopTimer");
-      interval = 0;
+      currentQuestion++;
+      console.log(currentQuestion);
+      $(".qanda").attr("disabled","disabled");
       clearInterval(interval);
-      $("#countDownNumber").html("<h2>Times Up</h2>");
-   	  //show correct answer
-   	  if (currentQuestion === questions.length){
-			console.log("Game Over");
-		}
-	  else {
-	  	   	 FindNextQuestion();
-	  }
+      //wait 3 seconds to see the correct answer
+      var TimeOutQuestion = setTimeout(function(){ 
+	   	  if (currentQuestion-1 === questions.length){
+				TotalCorrect();
+				console.log("cQ : " + currentQuestion + " ques len : " + questions.length);
+			}
+		  else {
+		  	    FindNextQuestion();
+		  	    $(".qanda").attr("disabled",false);
+		  	    $(".qanda").attr("class","btn btn-info btn-lg qanda");
+		  }
+
+	  } , 3000);
     }
 
 
@@ -130,47 +137,27 @@ $(document).ready(function(){
 // Loop of questions
 
 	FindNextQuestion = function(){
-	 	$("#question").html(questions[currentQuestion].ques);
+	 	$("#question").html("<h3>" + "Question No : " + (parseInt(interval)+1) + "</br></br>" + questions[currentQuestion].ques + "</h3>");
 	    $("#ans1").html("<h3>" + questions[currentQuestion].a1 + "</h3>");	        
 	    $("#ans2").html("<h3>" + questions[currentQuestion].a2 + "</h3>");
 	    $("#ans3").html("<h3>" + questions[currentQuestion].a3 + "</h3>");
 	    $("#ans4").html("<h3>" + questions[currentQuestion].a4 + "</h3>");
 	    correctAnswer = questions[currentQuestion].ca;
-	    //console.log("correct Answer " + correctAnswer);
-
-		if (currentQuestion === questions.length){
-			console.log("Game Over");
-			stopTimer();
-		}
-		else {
-			currentQuestion++;
-		    startTimer();
-		}
-
+		currentQuestion++;
+		startTimer();
 	};
 
     FindNextQuestion();
 
 
-// Start Game
-/*	StartGame = function(){
-		for (i = 0 ; i < question.length ; i++){
-			FindNextQuestion(i);
-			startTimer();
-		}
-	};
-*/
-    //startTimer();
-
 // Answer click events
 	$("#ans1").on("click",function(){
 		if (correctAnswer === "a1"){
-			console.log("Correct Answer");
-			correctAnswer++;
+			$("#ans1").attr("class","btn btn-success btn-lg qanda");			
 		}
 		else {
-			console.log("Wrong Answer");
-			//show correct answer;			
+			$("#ans1").attr("class","btn btn-warning btn-lg qanda");
+			DisplayCorrectAnswer();	
 		}
 		stopTimer();
 	});
@@ -178,47 +165,61 @@ $(document).ready(function(){
 	$("#ans2").on("click",function(){
 		if (correctAnswer === "a2"){
 			console.log("Correct Answer");
-			correctAnswer++;
+			$("#ans2").attr("class","btn btn-success btn-lg qanda");
 		}
 		else {
-			console.log("Wrong Answer");
-			//show correct answer;			
+			$("#ans2").attr("class","btn btn-warning btn-lg qanda");	
+			DisplayCorrectAnswer();	
 		}
+
 		stopTimer();
 	});
 
 	$("#ans3").on("click",function(){
 		if (correctAnswer === "a3"){
-			console.log("Correct Answer");
-			correctAnswer++;
+			$("#ans3").attr("class","btn btn-success btn-lg qanda");
 		}
 		else {
-			console.log("Wrong Answer");
-			//show correct answer;			
+			$("#ans3").attr("class","btn btn-warning btn-lg qanda");	
+			DisplayCorrectAnswer();	
 		}
 		stopTimer();
 	});
 
 	$("#ans4").on("click",function(){
 		if (correctAnswer === "a4"){
-			console.log("Correct Answer");
-			correctAnswer++;
+			$("#ans4").attr("class","btn btn-success btn-lg qanda");
 		}
 		else {
-			console.log("Wrong Answer");
-			//show correct answer;			
+			$("#ans4").attr("class","btn btn-warning btn-lg qanda");	
+			DisplayCorrectAnswer();
 		}
 		stopTimer();
 	});
 
-// If times up show right answer
+
+// Display the correct answer at the end
+	DisplayCorrectAnswer = function(){
+		if (correctAnswer ==="a1"){
+			$("#ans1").attr("class","btn btn-success btn-lg qanda");
+		}
+		if (correctAnswer === "a2"){
+			$("#ans2").attr("class","btn btn-success btn-lg qanda");
+		}
+		if (correctAnswer === "a3"){
+			$("#ans1").attr("class","btn btn-success btn-lg qanda");
+		}
+		if (correctAnswer === "a4"){
+			$("#ans1").attr("class","btn btn-success btn-lg qanda");
+		}
+	};
+
 
 // End of questions give no of correct answers
-
-
-
-
-
+   TotalCorrect = function(){
+   	  alert(" Total number of correct answers : " + NoOfCorrAns); 
+   	  $(".jumbotron").fadeOut('slow'); 	  
+   };
 
 
 
