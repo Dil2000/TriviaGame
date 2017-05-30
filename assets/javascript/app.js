@@ -111,13 +111,12 @@ $(document).ready(function(){
 
 //  The stop function
     function stopTimer() {
-      currentQuestion++;
       console.log(currentQuestion);
       $(".qanda").attr("disabled","disabled");
       clearInterval(interval);
       //wait 3 seconds to see the correct answer
       var TimeOutQuestion = setTimeout(function(){ 
-	   	  if (currentQuestion-1 === questions.length){
+	   	  if (currentQuestion === questions.length){
 				TotalCorrect();
 				console.log("cQ : " + currentQuestion + " ques len : " + questions.length);
 			}
@@ -153,7 +152,8 @@ $(document).ready(function(){
 // Answer click events
 	$("#ans1").on("click",function(){
 		if (correctAnswer === "a1"){
-			$("#ans1").attr("class","btn btn-success btn-lg qanda");			
+			$("#ans1").attr("class","btn btn-success btn-lg qanda");	
+			NoOfCorrAns++;		
 		}
 		else {
 			$("#ans1").attr("class","btn btn-warning btn-lg qanda");
@@ -166,6 +166,7 @@ $(document).ready(function(){
 		if (correctAnswer === "a2"){
 			console.log("Correct Answer");
 			$("#ans2").attr("class","btn btn-success btn-lg qanda");
+			NoOfCorrAns++;	
 		}
 		else {
 			$("#ans2").attr("class","btn btn-warning btn-lg qanda");	
@@ -178,6 +179,7 @@ $(document).ready(function(){
 	$("#ans3").on("click",function(){
 		if (correctAnswer === "a3"){
 			$("#ans3").attr("class","btn btn-success btn-lg qanda");
+			NoOfCorrAns++;	
 		}
 		else {
 			$("#ans3").attr("class","btn btn-warning btn-lg qanda");	
@@ -189,6 +191,7 @@ $(document).ready(function(){
 	$("#ans4").on("click",function(){
 		if (correctAnswer === "a4"){
 			$("#ans4").attr("class","btn btn-success btn-lg qanda");
+			NoOfCorrAns++;	
 		}
 		else {
 			$("#ans4").attr("class","btn btn-warning btn-lg qanda");	
