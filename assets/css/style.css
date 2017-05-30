@@ -11,16 +11,28 @@
     }
 
     body{
-      background-image: url("../images/bg.jpg");
-      //background-color: 
+     // background-image: url("../images/bg.png");
     }
 
-    .jumbotron{
-      //background-color:transparent;
-      //background : fade(50%);  
-      opacity:0.9;    
+    .jumbotron {
+      background-color:transparent;
+
     }
 
     .quiz{
-    //  background-color:#002b36;
+      
     }
+
+    .qanda{
+      width:100%;
+      //border-radius: 15px 50px;
+      white-space: normal;
+    }
+
+   
+    #countDownNumber{
+       border-radius: 100px;
+       width : 100px;
+       height:100px;
+    }
+
