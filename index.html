@@ -43,38 +43,33 @@
 <div class="jumbotron">
   <div class="container text-center quiz">
 
-    <h1>Trivia Game</h1>      
+    <h1>Trivia Game</h1>  
 
 
     <div class = "row">
-       <div class = "col-sm-12">
-           <div id ="question"> Question goes here Question goes here Question goes here Question goes here Question goes here</div>
-       </div>
-    </div>
-    <div class = "row">
-        <div class ="col-sm-6">
-          <div id = "ans1" class = "ques"> <lablel class = "success">Answer 1 goes here</lablel></div>
-          <div id = "ans2" class = "ques"> Answer 2 goes here</div>
-        </div>
-        <div class = "row">
-            <div id = "ans3" class = "ques"> Answer 3 goes here</div>
-            <div id = "ans4" class = "ques"> Answer 4 goes here</div>
+        <div class = "col-sm-12">
+            <span class="label label-info label-large" id="question">Question goes here Question goes here Question goes here Question goes here</span><br/><br/>
         </div>
     </div>
+
     <div class = "row">
-         <div class = "col-sm-6">
-            <button id ="restart">Restart</button>
-            <div label id ="timeLeft"></div>
-            <div id ="countDownNumber">
-            </div>
+        <div class ="col-sm-5">
+          <button class="btn btn-info btn-lg qanda" type="button" id = "ans1">Answer 1 goes here</button><br/><br/>
+          <button class="btn btn-info btn-lg qanda" type="button" id = "ans2">Answer 2 goes here</button>
+        </div>
+
+        <div class = "col-sm-2">
+            <button class="btn btn-primary btn-lg" id ="countDownNumber"></button><br/><br/>
+        </div>
+
+        <div class = "col-sm-5">
+            <button class="btn btn-info btn-lg qanda" type="button" id = "ans3">Answer 3 goes here</button><br/><br/>
+            <button class="btn btn-info btn-lg qanda" type="button" id = "ans4">Answer 4 goes here</button>
+        </div>
     </div>
 
   </div>
 </div>
-  
-
-
-
 
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
