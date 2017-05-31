@@ -31,68 +31,70 @@ $(document).ready(function(){
 	    a4:"Heart",
 	    ca:"a1"
 	  },{
-	  	ques: "Six inches equates to how many millimetres",
-	    a1:"75",
-	    a2:"96",
-	    a3:"152",
-	    a4:"235",
+	  	ques: "Dumb Laws - It is illegal for stores to sell corn flakes on Sunday. ",
+	    a1:"Nashville - TN",
+	    a2:"Columbus - GA",
+	    a3:"Columbus - OH",
+	    a4:"Stamford - CT",
+	    ca:"a2" 
+	  },{
+	  	ques: "Dumb Laws - Persons may not wear hoods in public.",
+	    a1:"Austin - TX",
+	    a2:"Knoxville - TN",
+	    a3:"Dublin - GA",
+	    a4:"Atlanta - GA",
 	    ca:"a3" 
-	  }/*,{
-	  	ques: "",
-	    a1:"",
-	    a2:"",
-	    a3:"",
-	    a4:"",
-	    ca:"" 
-	  }*/
+	  },{
+	  	ques:"Dumb Laws - Every head of household must own a gun.",
+	    a1:"Atlanta - GA",
+	    a2:"Marietta - GA",
+	    a3:"Alpharetta - GA",
+	    a4:"Kennasaw - GA",
+	    ca:"a4" 
+	  },{
+	  	ques: "Dumb Laws - It is illegal to say Oh Boy.",
+	    a1:"Gainesville - GA",
+	    a2:"Marietta - GA",
+	    a3:"Jonesboro - GA",
+	    a4:"Kennasaw - GA",
+	    ca:"a3" 
+	  },{
+	  	ques: "Dumb Laws - Masks may not be worn in public.",
+	    a1:"Alabama",
+	    a2:"Florida",
+	    a3:"North Carolina",
+	    a4:"Tennessee",
+	    ca:"a1" 
+	  },{
+	  	ques: "It is a crime to share your Netflix password.",
+	    a1:"Alabama",
+	    a2:"Florida",
+	    a3:"North Carolina",
+	    a4:"Tennessee",
+	    ca:"a4" 
+	  }
+
+	];
 
 
-	]
-
-
+	var NoOfCorrAns = 0;		// No of Correct answers
+	var NoOfIncAns = 0;			// No of Incorrect answers
+    var currentQuestion =0;		// question number	
+	var correctAnswer = "";		// Correct answer for the current question
+    var CountDown = 60;			// No of seconds left to answer the question
+    var interval = 0;			// Timers left to answer the question
+    var reminder
+    
 /*****************************************************************************/
 
-	var NoOfCorrAns = 0;
-	var correctAnswer = "";
-    var CountDown = 60;
-    var interval = 0;
-    var currentQuestion =0;
-
-
 // Time Out for question
-/*
-	var TimeOutQuestion = setTimeout(function(){ 
-		//alert("time out");
-	} , 15000); 
-
-	function fiveSeconds(){
-		$("#timeLeft").html("<h2>Five Seconds left</h2>");
-	};
-
 	function tenSeconds(){
-		$("#timeLeft").html("<h2>Ten Seconds left</h2>");
-		startTimer();
+		$("#TimeLeft").html("<h2>Ten Seconds left</h2>");
+		$("#TimeLeft").fadeIn('slow').delay(1000).fadeOut("slow");
 	};
 
-    function timeOut(){
-        $("#timeLeft").html("<h2>Time Out</h2>");
-    };
 
-//  Clear Time after question answered
-	$("#restart").on("click",function(){
-		clearTimeout(TimeOutQuestion);
-	});
-	
-// Clear time after a correct answer
-	setTimeout(fiveSeconds,5000);
-
-// Clear time after a wrong answer
-	setTimeout(tenSeconds,10000);
-
-// time done
-    setTimeout(timeOut,15000);
-*/
-// Running Timer
+//  Timer for questions
 	function startTimer() {
 	  CountDown = 21;
       interval = setInterval(decrement, 1000);      
@@ -113,9 +115,13 @@ $(document).ready(function(){
     function stopTimer() {
       console.log(currentQuestion);
       $(".qanda").attr("disabled","disabled");
+      function myStopFunction() {
+    		clearTimeout(reminder);
+	  }
       clearInterval(interval);
-      //wait 3 seconds to see the correct answer
+      //wait 2 seconds to show the correct answer
       var TimeOutQuestion = setTimeout(function(){ 
+
 	   	  if (currentQuestion === questions.length){
 				TotalCorrect();
 				console.log("cQ : " + currentQuestion + " ques len : " + questions.length);
@@ -126,51 +132,76 @@ $(document).ready(function(){
 		  	    $(".qanda").attr("class","btn btn-info btn-lg qanda");
 		  }
 
-	  } , 3000);
+	  } , 2000);	  
     }
 
 
 /*****************************************************************/
 
+//  Start Button
+	$("#startgame").on("click",function(){
+		// FadeIn's and outs
+		$(".jumbotron").fadeIn('fast'); 
+   	    $("#congrats").fadeOut('fast'); 
+   	    $("#Incorrects").fadeOut('fast');   	  
+        $("#startgame").fadeOut('fast');
+        $("#FinalImge").fadeOut('fast');
 
-// Loop of questions
+        var NoOfCorrAns = 0;		// No of Correct answers
+		var NoOfIncAns = 0;			// No of Incorrect answers
+	    var currentQuestion = 0;	// question number	
+		var correctAnswer = "";		// Correct answer for the current question
+	    var interval = 0;			// Timers left to answer the question
+
+		FindNextQuestion();
+	});
+
+
+//  Questions
 
 	FindNextQuestion = function(){
-	 	$("#question").html("<h3>" + "Question No : " + (parseInt(interval)+1) + "</br></br>" + questions[currentQuestion].ques + "</h3>");
-	    $("#ans1").html("<h3>" + questions[currentQuestion].a1 + "</h3>");	        
-	    $("#ans2").html("<h3>" + questions[currentQuestion].a2 + "</h3>");
-	    $("#ans3").html("<h3>" + questions[currentQuestion].a3 + "</h3>");
-	    $("#ans4").html("<h3>" + questions[currentQuestion].a4 + "</h3>");
+
+	 	$("#question").html("<h3>" + "Question No : " + (parseInt(currentQuestion)+1) + "</br></br>" + questions[currentQuestion].ques + "</h3>");
+	    $("#ans1").html("<h4>" + questions[currentQuestion].a1 + "</h4>");	        
+	    $("#ans2").html("<h4>" + questions[currentQuestion].a2 + "</h4>");
+	    $("#ans3").html("<h4>" + questions[currentQuestion].a3 + "</h4>");
+	    $("#ans4").html("<h4>" + questions[currentQuestion].a4 + "</h4>");
+
 	    correctAnswer = questions[currentQuestion].ca;
 		currentQuestion++;
+
 		startTimer();
+		reminder = setTimeout(tenSeconds,11000);
+
+
+		$("#congrats").text("");
+		// Audio to when starts a new question
+		var x = document.getElementById("waitaudio");
+		x.play();
+
 	};
 
-    FindNextQuestion();
 
+//  Click events
 
-// Answer click events
 	$("#ans1").on("click",function(){
 		if (correctAnswer === "a1"){
-			$("#ans1").attr("class","btn btn-success btn-lg qanda");	
-			NoOfCorrAns++;		
+			ClickedCorrect(this);
 		}
 		else {
-			$("#ans1").attr("class","btn btn-warning btn-lg qanda");
-			DisplayCorrectAnswer();	
+			NoOfIncAns++;
+			DisplayCorrectAnswer(this);	
 		}
 		stopTimer();
 	});
 
 	$("#ans2").on("click",function(){
 		if (correctAnswer === "a2"){
-			console.log("Correct Answer");
-			$("#ans2").attr("class","btn btn-success btn-lg qanda");
-			NoOfCorrAns++;	
+			ClickedCorrect(this);	
 		}
 		else {
-			$("#ans2").attr("class","btn btn-warning btn-lg qanda");	
-			DisplayCorrectAnswer();	
+			NoOfIncAns++;
+			DisplayCorrectAnswer(this);	
 		}
 
 		stopTimer();
@@ -178,31 +209,36 @@ $(document).ready(function(){
 
 	$("#ans3").on("click",function(){
 		if (correctAnswer === "a3"){
-			$("#ans3").attr("class","btn btn-success btn-lg qanda");
-			NoOfCorrAns++;	
+			ClickedCorrect(this);	
 		}
 		else {
-			$("#ans3").attr("class","btn btn-warning btn-lg qanda");	
-			DisplayCorrectAnswer();	
+			NoOfIncAns++;
+			DisplayCorrectAnswer(this);	
 		}
 		stopTimer();
 	});
 
 	$("#ans4").on("click",function(){
 		if (correctAnswer === "a4"){
-			$("#ans4").attr("class","btn btn-success btn-lg qanda");
-			NoOfCorrAns++;	
+			ClickedCorrect(this);	
 		}
 		else {
-			$("#ans4").attr("class","btn btn-warning btn-lg qanda");	
-			DisplayCorrectAnswer();
+			NoOfIncAns++;
+			DisplayCorrectAnswer(this);
 		}
 		stopTimer();
 	});
 
+//  When clicked the correct answer
+	ClickedCorrect = function(a){
+		NoOfCorrAns++;	
+		$("#congrats").text("Congratulations");
+		$(a).attr("class","btn btn-success btn-lg qanda");
+	};
 
-// Display the correct answer at the end
-	DisplayCorrectAnswer = function(){
+
+//  Display the correct answer at the end
+	DisplayCorrectAnswer = function(b){
 		if (correctAnswer ==="a1"){
 			$("#ans1").attr("class","btn btn-success btn-lg qanda");
 		}
@@ -215,17 +251,19 @@ $(document).ready(function(){
 		if (correctAnswer === "a4"){
 			$("#ans1").attr("class","btn btn-success btn-lg qanda");
 		}
+		$(b).attr("class","btn btn-warning btn-lg qanda");	
 	};
 
 
-// End of questions give no of correct answers
-   TotalCorrect = function(){
-   	  alert(" Total number of correct answers : " + NoOfCorrAns); 
-   	  $(".jumbotron").fadeOut('slow'); 	  
-   };
-
-
-
-
+//  End of questions give no of correct answers
+    TotalCorrect = function(){
+   	  $(".jumbotron").fadeOut('slow'); 
+   	  $("#congrats").html("<h1>Number of Correct Answers : " + NoOfCorrAns + "</h1>");
+   	  $("#congrats").fadeIn('slow'); 
+   	  $("#Incorrects").html("<h1>Number of Incorrect Answers : " + NoOfIncAns + "</h1>")
+   	  $("#Incorrects").fadeIn('slow');   	  
+      $("#startgame").fadeIn('slow');
+      $("#FinalImge").fadeIn('slow');
+    };
 
 });

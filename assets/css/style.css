@@ -1,8 +1,10 @@
     footer {
       padding: 25px;
-      position: relative;
+      position:absolute;
       bottom:0px;
-      width:100%;
+      margin-bottom:5px;
+      width:80%;
+      height:60px;
     }
 
     #Logo{
@@ -15,8 +17,9 @@
     }
 
     .jumbotron {
-      background-color:transparent;
-
+      //background-color:transparent;
+      background-image: url("../images/bg.png");
+      display:none;
     }
 
     .quiz{
@@ -34,5 +37,35 @@
        border-radius: 100px;
        width : 100px;
        height:100px;
+    }
+
+    .audioFiles{
+      opacity:0;
+    }
+
+    #TimeLeft{
+      color : #d33682;
+    }
+
+    #gameName{
+      color: #b58900;
+    }
+
+    #question{
+      background-color:#083e4b;
+      padding : 5px;
+      color:white;
+    }
+
+    #congrats,#Incorrects,#FinalImge{
+        display:none;
+    }
+
+    #startgame{
+      //display:none;
+      padding :20px;
+      padding-bottom:50px;
+      width:60%;
+      font-size:40px;
     }
 
