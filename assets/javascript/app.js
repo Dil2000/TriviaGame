@@ -66,7 +66,7 @@ $(document).ready(function(){
 	    a4:"Tennessee",
 	    ca:"a1" 
 	  },{
-	  	ques: "It is a crime to share your Netflix password.",
+	  	ques: "Dumb Laws - It is a crime to share your Netflix password.",
 	    a1:"Alabama",
 	    a2:"Florida",
 	    a3:"North Carolina",
@@ -138,26 +138,6 @@ $(document).ready(function(){
 
 /*****************************************************************/
 
-//  Start Button
-	$("#startgame").on("click",function(){
-		// FadeIn's and outs
-		$(".jumbotron").fadeIn('fast'); 
-   	    $("#congrats").fadeOut('fast'); 
-   	    $("#Incorrects").fadeOut('fast');   	  
-        $("#startgame").fadeOut('fast');
-        $("#FinalImge").fadeOut('fast');
-
-        var NoOfCorrAns = 0;		// No of Correct answers
-		var NoOfIncAns = 0;			// No of Incorrect answers
-	    var currentQuestion = 0;	// question number	
-		var correctAnswer = "";		// Correct answer for the current question
-	    var interval = 0;			// Timers left to answer the question
-
-		FindNextQuestion();
-	});
-
-
-//  Questions
 
 	FindNextQuestion = function(){
 
@@ -180,6 +160,32 @@ $(document).ready(function(){
 		x.play();
 
 	};
+
+//  Start Button
+	$("#startgame").on("click",function(){
+		// FadeIn's and outs
+		$(".jumbotron").fadeIn('fast'); 
+
+   	    $("#congrats").fadeOut('fast'); 
+   	    $("#Incorrects").fadeOut('fast');   	  
+        $("#startgame").fadeOut('fast');
+        $("#FinalImge").fadeOut('fast');
+
+        var NoOfCorrAns = 0;		// No of Correct answers
+		var NoOfIncAns = 0;			// No of Incorrect answers
+	    var currentQuestion = 0;	// question number	
+		var correctAnswer = "";		// Correct answer for the current question
+	    var interval = 0;			// Timers left to answer the question
+
+		FindNextQuestion();
+		$(".qanda").attr("disabled",false);
+	    $(".qanda").attr("class","btn btn-info btn-lg qanda");
+	});
+
+
+//  Questions
+
+
 
 
 //  Click events
@@ -246,10 +252,10 @@ $(document).ready(function(){
 			$("#ans2").attr("class","btn btn-success btn-lg qanda");
 		}
 		if (correctAnswer === "a3"){
-			$("#ans1").attr("class","btn btn-success btn-lg qanda");
+			$("#ans3").attr("class","btn btn-success btn-lg qanda");
 		}
 		if (correctAnswer === "a4"){
-			$("#ans1").attr("class","btn btn-success btn-lg qanda");
+			$("#ans4").attr("class","btn btn-success btn-lg qanda");
 		}
 		$(b).attr("class","btn btn-warning btn-lg qanda");	
 	};
