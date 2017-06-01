@@ -5,102 +5,113 @@
   <!--  Style Sheets  -->
   <!-- ---------------------------------------- -->
   <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="http://bootswatch.com/solar/bootstrap.css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://bootswatch.com/solar/bootstrap.css"> 
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#" id="Logo">
-          <h1>Nelum</h1>
-      </a>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" id="Logo">
+            <h1>Nelum</h1>
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="index.html">Trivia Game <span class="caret"></span></a></li>
+          <!--<li><a href="contact.html">Contact</a></li>-->
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div id ="wrapper">
+
+    <div class="container text-center">
+        <h1 id="gameName"> ~ Trivia Game ~</h1>  
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="index.html">Trivia Game <span class="caret"></span></a></li>
-        <!--<li><a href="contact.html">Contact</a></li>-->
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+    <div class="jumbotron">
+        <div class="container text-center quiz">
+            <div class = "row">
+                <div class = "col-sm-12">
+                    <div id="question">Question goes here Question goes here Question goes here Question goes here
+                    </div><br/><br/>
+                </div>
+            </div>
 
-<div class="container text-center">
-    <h1 id="gameName"> ~ Trivia Game ~</h1>  
-</div>
+            <div class = "row">
+                <div class ="col-sm-5">
+                  <button class="btn btn-info btn-lg qanda" type="button" id = "ans1">Answer 1 goes here</button><br/><br/>
+                  <button class="btn btn-info btn-lg qanda" type="button" id = "ans2">Answer 2 goes here</button>
+                </div>
 
-<div class="jumbotron">
-  <div class="container text-center quiz">
+                <div class = "col-sm-2">Time Remaining
+                    <button class="btn btn-primary btn-lg" id ="countDownNumber"></button><br/><br/>
+                </div>
+
+                <div class = "col-sm-5">
+                    <button class="btn btn-info btn-lg qanda" type="button" id = "ans3">Answer 3 goes here</button><br/><br/>
+                    <button class="btn btn-info btn-lg qanda" type="button" id = "ans4">Answer 4 goes here</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container text-center quiz">        
+        <div class = "row">
+            <button class="btn btn-primary btn-lg" type="button" id = "startgame">Start Game</button>
+            <div id = "FinalImge"><img src = "assets/images/winner.jpeg"  width = "300px" height = "150px" alt = "Final Image">
+            </div>
+        </div>
+
+        <div class = "row">
+            <div class ="col-sm-4">
+                <div class="alert alert-dismissible alert-success" id ="congrats"></div>
+            </div>
+            <div class ="col-sm-4">
+                <div id="TimeLeft"></div>      
+            </div>    
+            <div class ="col-sm-4">
+                <div class="alert alert-dismissible alert-danger" id ="Incorrects"></div>     
+            </div>    
+        </div>
+
+    </div>
+
+    <!-- Audio Files -->
 
     <div class = "row">
-        <div class = "col-sm-12">
-            <div id="question">Question goes here Question goes here Question goes here Question goes here</div><br/><br/>
+        <div class = "col-sm-12 audioFiles"">
+          <audio id="waitaudio" controls>
+            <source src="assets/audio/0292.ogg" type="audio/ogg">
+            Your browser does not support the audio element.
+          </audio>
         </div>
     </div>
 
-    <div class = "row">
-        <div class ="col-sm-5">
-          <button class="btn btn-info btn-lg qanda" type="button" id = "ans1">Answer 1 goes here</button><br/><br/>
-          <button class="btn btn-info btn-lg qanda" type="button" id = "ans2">Answer 2 goes here</button>
-        </div>
+      <!-- JAVASCRIPT  -->
+      <!-- ---------------------------------------- -->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
-        <div class = "col-sm-2">Time Remaining
-            <button class="btn btn-primary btn-lg" id ="countDownNumber"></button><br/><br/>
-        </div>
+      <script src="assets/javascript/app.js" type="text/javascript"></script>
+  
 
-        <div class = "col-sm-5">
-            <button class="btn btn-info btn-lg qanda" type="button" id = "ans3">Answer 3 goes here</button><br/><br/>
-            <button class="btn btn-info btn-lg qanda" type="button" id = "ans4">Answer 4 goes here</button>
-        </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="container text-center quiz">
-    <div class = "row">
-        <button class="btn btn-primary btn-lg" type="button" id = "startgame">Start Game</button>
-        <div id = "FinalImge"><img src = "assets/images/winner.jpeg" alt = "Final Image"></div>
-    </div>
-
-    <div class = "row">
-        <div class ="col-sm-4">
-            <div class="alert alert-dismissible alert-success" id ="congrats"></div>
-        </div>
-        <div class ="col-sm-4">
-            <div id="TimeLeft"></div>      
-        </div>    
-        <div class ="col-sm-4">
-            <div class="alert alert-dismissible alert-success" id ="Incorrects"></div>       
-        </div>    
-    </div>
-
-<div>
-
-<!-- Audio Files -->
-
-<div class = "row">
-    <div class = "col-sm-12 audioFiles"">
-      <audio id="waitaudio" controls>
-        <source src="assets/audio/0292.ogg" type="audio/ogg">
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-</div>
-
-
+</div> <!-- Wrapper -->
 
 
 <footer class = "container-fluid">
@@ -114,12 +125,6 @@
     </div>
   </div>
 </footer>
-
-  <!-- JAVASCRIPT  -->
-  <!-- ---------------------------------------- -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-
-  <script src="assets/javascript/app.js" type="text/javascript"></script>
 
 </body>
 </html>

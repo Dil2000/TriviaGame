@@ -113,11 +113,9 @@ $(document).ready(function(){
 
 //  The stop function
     function stopTimer() {
-      console.log(currentQuestion);
-      $(".qanda").attr("disabled","disabled");
-      function myStopFunction() {
-    		clearTimeout(reminder);
-	  }
+      
+      $(".qanda").attr("disabled",true);
+      clearTimeout(reminder);
       clearInterval(interval);
       //wait 2 seconds to show the correct answer
       var TimeOutQuestion = setTimeout(function(){ 
@@ -164,28 +162,24 @@ $(document).ready(function(){
 //  Start Button
 	$("#startgame").on("click",function(){
 		// FadeIn's and outs
-		$(".jumbotron").fadeIn('fast'); 
-
    	    $("#congrats").fadeOut('fast'); 
    	    $("#Incorrects").fadeOut('fast');   	  
         $("#startgame").fadeOut('fast');
         $("#FinalImge").fadeOut('fast');
 
-        var NoOfCorrAns = 0;		// No of Correct answers
-		var NoOfIncAns = 0;			// No of Incorrect answers
-	    var currentQuestion = 0;	// question number	
-		var correctAnswer = "";		// Correct answer for the current question
-	    var interval = 0;			// Timers left to answer the question
+        NoOfCorrAns = 0;		// No of Correct answers
+		NoOfIncAns = 0;			// No of Incorrect answers
+	    currentQuestion = 0;	// question number	
+		correctAnswer = "";		// Correct answer for the current question
+	    interval = 0;			// Timers left to answer the question
+	    console.log(currentQuestion);
+		$(".jumbotron").fadeIn('fast'); 
 
-		FindNextQuestion();
 		$(".qanda").attr("disabled",false);
 	    $(".qanda").attr("class","btn btn-info btn-lg qanda");
+	    //startTimer();
+	    FindNextQuestion();
 	});
-
-
-//  Questions
-
-
 
 
 //  Click events
