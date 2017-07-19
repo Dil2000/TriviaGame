@@ -53,26 +53,40 @@
       color:white;
     }
 
-    #congrats,#Incorrects,#FinalImge{
-        display:none;
+    #congrats,#Incorrects,/*#FinalImge*/{
+      display:none;   
+      background:transparent;
+    }
+
+    #FinalImge{
+      height:150px;
+      width:100%;
+      background-image: url("../images/winner.jpeg");
+      background-repeat: repeat-x;
     }
 
     #startgame{
-      //display:none;
       padding :20px;
-      padding-bottom:50px;
-      width:60%;
+      margin:30px;
+      width:20%;      
       font-size:40px;
+      border-style:dotted solid double;
+      border-width:5px;  
+      border-style:dashed;
+      border-color:#fff;
+
     }
 
     @media screen and (max-width: 640px) {
       footer{
+        bottom:0px;
         position:absolute;
       }
     }
 
     @media screen and (max-width: 980px) {
       footer{
+        bottom:0px;
         position:fixed;
       }
     }
