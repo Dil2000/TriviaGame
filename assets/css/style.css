@@ -53,12 +53,18 @@
       color:white;
     }
 
-    #congrats,#Incorrects,/*#FinalImge*/{
+    #Incorrects,/*#FinalImge*/{
+      display:none;   
+      background:transparent;
+    }
+
+    #congrats, /*#FinalImge*/{
       display:none;   
       background:transparent;
     }
 
     #FinalImge{
+      display:none;
       height:150px;
       width:100%;
       background-image: url("../images/winner.jpeg");
